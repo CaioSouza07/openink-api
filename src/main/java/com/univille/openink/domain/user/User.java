@@ -1,6 +1,6 @@
 package com.univille.openink.domain.user;
 
-import com.univille.openink.domain.user.dto.CreateUserRequest;
+import com.univille.openink.domain.user.dto.AuthRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,7 +21,7 @@ public class User{
     @Column(nullable = false, unique = true, length = 150)
     private String name;
 
-    public User(CreateUserRequest data){
+    public User(AuthRequest data){
         this.name = data.name();
     }
 
