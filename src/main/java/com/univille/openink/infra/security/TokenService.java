@@ -37,7 +37,7 @@ public class TokenService {
                     .verify(token)
                     .getSubject();
         }catch (JWTVerificationException e){
-            throw new TokenJWTException("Ero ao validar o token JWT");
+            throw new TokenJWTException("Erro ao validar o token JWT");
         }
     }
 }
