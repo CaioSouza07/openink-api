@@ -5,6 +5,8 @@ import com.univille.openink.domain.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "posts")
 @NoArgsConstructor
@@ -32,10 +34,14 @@ public class Post {
     @Column(nullable = false, name = "read_time")
     private Integer readTime;
 
+    @Column(nullable = false, name = "created_at")
+    private LocalDateTime createdAt;
+
     public Post(CreatePostRequest request, User user){
         this.title = request.title();
         this.description = request.description();
         this.user = user;
         this.readTime = request.readTime();
+        this.createdAt = LocalDateTime.now();
     }
 }

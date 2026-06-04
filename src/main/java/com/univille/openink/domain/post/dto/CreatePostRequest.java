@@ -12,9 +12,6 @@ public record CreatePostRequest(
         String description,
 
         @NotNull
-        Long userId,
-
-        @NotNull
         Integer readTime
 ) {
 }
