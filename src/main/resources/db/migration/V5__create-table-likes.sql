@@ -1,4 +1,4 @@
-create table like(
+create table likes(
     id BIGSERIAL primary key,
     id_post BIGINT not null,
     id_user BIGINT not null,
