@@ -3,6 +3,7 @@ package com.univille.openink.infra.security;
 import com.univille.openink.domain.user.User;
 import com.univille.openink.domain.user.UserRepository;
 import com.univille.openink.infra.exception.UnauthorizedException;
+import com.univille.openink.infra.exception.TokenJWTException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
