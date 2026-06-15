@@ -6,24 +6,20 @@ import com.univille.openink.domain.post.Post;
 import com.univille.openink.domain.post.PostRepository;
 import com.univille.openink.domain.user.User;
 import com.univille.openink.domain.user.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class LikeService {
 
     private final LikeRepository likeRepository;
     private final PostRepository postRepository;
     private final UserRepository userRepository;
 
-    public LikeService(LikeRepository likeRepository, PostRepository postRepository, UserRepository userRepository){
-        this.likeRepository = likeRepository;
-        this.postRepository = postRepository;
-        this.userRepository = userRepository;
-    }
-
     @Transactional
-    public LikeResponse toggleLike(Long userId, Long postId) {
+    public void toggleLike(Long userId, Long postId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
         Post post = postRepository.findById(postId)

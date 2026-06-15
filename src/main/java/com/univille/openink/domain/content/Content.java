@@ -1,5 +1,6 @@
 package com.univille.openink.domain.content;
 
+import com.univille.openink.domain.post.Post;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,11 +20,13 @@ public class Content {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id_post", nullable = false)
-    private Long idPost;
+    @OneToOne
+    @JoinColumn(name = "id_post")
+    private Post post;
 
-    @Column(name = "texto", length = 255)
-    private String texto;
+    @Lob
+    @Column(nullable = false)
+    private String text;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
