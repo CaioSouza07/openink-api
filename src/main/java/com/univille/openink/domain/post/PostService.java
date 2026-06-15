@@ -1,5 +1,6 @@
 package com.univille.openink.domain.post;
 
+import com.univille.openink.domain.content.ContentService;
 import com.univille.openink.domain.post.dto.CreatePostRequest;
 import com.univille.openink.domain.post.dto.PostResponse;
 import com.univille.openink.domain.user.User;
@@ -15,12 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final ContentService contentService;
 
     @Transactional
     public PostResponse save(CreatePostRequest request, User user){
 
         var post = new Post(request, user);
         postRepository.save(post);
+
+        contentService.criar(request.text(), post);
 
         return new PostResponse(post);
     }

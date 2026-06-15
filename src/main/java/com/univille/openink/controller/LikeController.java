@@ -17,11 +17,11 @@ public class LikeController {
         this.likeService = likeService;
     }
     @PostMapping
-    public ResponseEntity<LikeResponse> toggleLike(
+    public ResponseEntity<Void> toggleLike(
             @PathVariable Long postId,
             @AuthenticationPrincipal User loggedUser
     ) {
-        LikeResponse response = likeService.toggleLike(loggedUser.getId(), postId);
-        return ResponseEntity.ok(response);
+        likeService.toggleLike(loggedUser.getId(), postId);
+        return ResponseEntity.ok().build();
     }
 }
