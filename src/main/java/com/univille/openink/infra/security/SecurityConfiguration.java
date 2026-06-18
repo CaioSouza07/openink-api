@@ -33,7 +33,7 @@ public class SecurityConfiguration {
                         authorize.requestMatchers(HttpMethod.GET, "/user/**").permitAll();
                         authorize.requestMatchers(HttpMethod.GET, "/post/**").permitAll();
                         authorize.requestMatchers(HttpMethod.GET, "/posts/*/likes").permitAll();
-                        authorize.requestMatchers(HttpMethod.GET, "/swagger-ui.html", "swagger-ui/**",  "/v3/api-docs/**").permitAll();
+                        authorize.requestMatchers(HttpMethod.GET, "/swagger-ui.html", "swagger-ui/**",  "/v3/api-docs/**", "/h2-console").permitAll();
                         authorize.anyRequest().authenticated();
                     })
                     .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
