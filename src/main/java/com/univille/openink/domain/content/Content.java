@@ -24,7 +24,6 @@ public class Content {
     @JoinColumn(name = "id_post")
     private Post post;
 
-    @Lob
     @Column(nullable = false)
     private String text;
 

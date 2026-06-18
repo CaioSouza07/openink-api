@@ -1,17 +1,16 @@
-create table likes(
-    id BIGSERIAL primary key,
-    id_post BIGINT not null,
-    id_user BIGINT not null,
+CREATE TABLE likes (
+    id BIGSERIAL PRIMARY KEY,
+    id_post BIGINT NOT NULL,
+    id_user BIGINT NOT NULL,
 
+    CONSTRAINT fk_like_post
+        FOREIGN KEY (id_post)
+            REFERENCES posts (id),
 
-        constraint fk_like_post,
-        foreign key (id_post),
-        references posts (id_post),
+    CONSTRAINT fk_like_user
+        FOREIGN KEY (id_user)
+            REFERENCES users (id),
 
-        constraint fk_like_user,
-        foreing key (id_user),
-        references users (id_user),
-
-        constraint uk_like_user_post,
+    CONSTRAINT uk_like_user_post
         UNIQUE (id_user, id_post)
 );

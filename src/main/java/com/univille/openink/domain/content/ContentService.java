@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ContentService {
 
     private final ContentRepository contentRepository;
@@ -28,7 +29,6 @@ public class ContentService {
         return new ContentResponse(content);
     }
 
-    @Transactional
     public ContentResponse criar(String text, Post post) {
         Content content = new Content();
         content.setText(text);
@@ -37,7 +37,6 @@ public class ContentService {
         return new ContentResponse(content);
     }
 
-    @Transactional
     public void deletar(Long id) {
         contentRepository.deleteById(id);
     }
