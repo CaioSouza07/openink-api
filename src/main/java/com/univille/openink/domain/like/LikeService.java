@@ -2,6 +2,7 @@ package com.univille.openink.domain.like;
 
 
 import com.univille.openink.domain.like.dto.LikeResponse;
+import com.univille.openink.domain.like.dto.NumberLikesResponse;
 import com.univille.openink.domain.post.Post;
 import com.univille.openink.domain.post.PostRepository;
 import com.univille.openink.domain.user.User;
@@ -33,5 +34,12 @@ public class LikeService {
             newLike.setPost(post);
             likeRepository.save(newLike);
         }
+    }
+
+    public NumberLikesResponse  getNumberLikes(Long postId) {
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new RuntimeException("Post não encontrado"));
+        long totalLikes = likeRepository.countByPost(post);
+        return new NumberLikesResponse(totalLikes);
     }
 }
